@@ -1,13 +1,18 @@
+//Imports:
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+//Component Definition:
 export default function SignUp() {
+  //State Initialization:
   const [formData, setFormData] = useState({});
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate= useNavigate();
 
+  //Event Handlers:
   const handleChange = (e) => {
+    // Logic to update formData state based on user input
     setFormData({
       ...formData,
       [e.target.id]: e.target.value,
@@ -15,6 +20,7 @@ export default function SignUp() {
   };
   
   const handleSubmit = async (e) => {
+    // Logic to handle form submission
     e.preventDefault();
     try {
       setLoading(true);
@@ -43,7 +49,9 @@ export default function SignUp() {
   
   console.log(formData);
   
+  
   return (
+    // JSX for rendering the sign-up form
     <div className='p-3 max-w-lg mx-auto'>
       <h1 className='text-3xl text-center font-semibold my-7'>Sign Up</h1>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
