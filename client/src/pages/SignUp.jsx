@@ -1,6 +1,7 @@
 //Imports:
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import OAuth from '../components/OAuth';
 
 //Component Definition:
 export default function SignUp() {
@@ -32,6 +33,7 @@ export default function SignUp() {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
+      console.log(data);
       if(data.success === false){
         setLoading(false);
         setError(data.message);
@@ -40,7 +42,6 @@ export default function SignUp() {
       setLoading(false);
       setError(null);
       navigate('/sign-in');
-      console.log(data);
     } catch (error) {
       setLoading(false);
       setError(error.message);
@@ -59,9 +60,11 @@ export default function SignUp() {
         <input type="email" placeholder='email' className='border p-3 rounded-lg' id='email' onChange={handleChange}/>
         <input type="password" placeholder='password' className='border p-3 rounded-lg' id='password' onChange={handleChange}/>
         
-        <button disabled={loading} className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>
+        <button disabled={loading} 
+          className='bg-slate-700 text-white p-3 rounded-lg uppercase hover:opacity-95 disabled:opacity-80'>
           {loading ? 'loading...' : 'Sign Up'}
         </button>
+        <OAuth />
       </form>
       <div className='flex gap-2 mt-5'>
         <p>Have an account? </p>

@@ -14,8 +14,13 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-    }
-}, { timestamps: true });
+    },
+    avatar: {
+        type: String,
+        default: "https://thumbs.dreamstime.com/b/user-profile-icon-vector-avatar-person-icon-profile-picture-portrait-symbol-neutral-gender-silhouette-circle-button-avatar-264091577.jpg"
+    },
+},
+{ timestamps: true });
 
 const User= mongoose.model('User', userSchema);
 
